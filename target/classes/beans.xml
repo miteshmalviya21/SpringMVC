@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- this bean uses setter and default constructor -->
+<bean id="msg" class="study.beans.MessageBean" scope="prototype">
+	<property name="message" value="hiii..."></property>
+	<property name="senderName" value="Mitesh"></property>
+	<property name="reiciverAddress" ref="address"></property>
+</bean>
+
+<!-- this bean uses dependency injection with parameter constructor -->
+<bean id="msg2" class="study.beans.MessageBean" lazy-init="true" >
+	<constructor-arg value="Good Morning"></constructor-arg>
+	<constructor-arg value="Mitesh"></constructor-arg>
+	<constructor-arg ref="address"></constructor-arg>
+</bean>
+
+<!-- this bean uses dependency injection with parameter constructor -->
+<bean id="msg3" class="study.beans.MessageBean" >
+	<constructor-arg ref="address"></constructor-arg>
+</bean>
+
+<bean id="msg4" class="study.beans.MessageBean" autowire="byName" >
+
+</bean>
+
+<bean id="address" class="study.beans.AddressBean" lazy-init="true">
+	<property name="location" value="nutan nagar"></property>
+	<property name="city" value="Khargone"></property>
+	<property name="state" value="Madhya Pradesh"></property>
+	<property name="country" value="India"></property>
+	<property name="pin" value="451001"></property>
+</bean>
+
+<bean id="reciverAddress" class="study.beans.AddressBean" lazy-init="true">
+	<property name="location" value="nutan nagar"></property>
+	<property name="city" value="Khargone"></property>
+	<property name="state" value="Madhya Pradesh"></property>
+	<property name="country" value="India"></property>
+	<property name="pin" value="451001"></property>
+</bean>
+
+</beans>
